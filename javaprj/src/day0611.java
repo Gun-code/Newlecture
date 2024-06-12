@@ -1,7 +1,7 @@
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class App {
+public class day0611 {
     public static void main(String[] args) throws IOException {
         
         // int chCode = 'E';
@@ -10,7 +10,7 @@ public class App {
 
         FileOutputStream fos = new FileOutputStream("C:\\8th\\hello.txt");
         fos.write('E');
-        // fos.close();
+        fos.close();
         System.out.println("작업완료");
 
     }
