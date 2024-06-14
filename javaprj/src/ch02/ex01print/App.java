@@ -1,8 +1,11 @@
 package ch02.ex01print;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.charset.Charset;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws IOException {
@@ -22,9 +25,15 @@ public class App {
         int total;
         double avg;
 
-        kor1 = 30;
-        kor2 = 40;
-        kor3 = 100;
+        FileInputStream fis = new FileInputStream("javaprj/res/data.txt");
+        Scanner sc = new Scanner(fis);
+
+        kor1 = sc.nextInt();
+        kor2 = sc.nextInt();
+        kor3 = sc.nextInt();
+
+        sc.close();
+        fis.close();
 
         total = kor1 + kor2 + kor3;
         avg = total / 3.0;
@@ -41,11 +50,25 @@ public class App {
         System.out.printf("avg : %.2f\n", avg);
         System.out.println("───────────────────────────────────");
 
+        System.out.println();
+        System.out.println("┌─────────────────────────────────┐");
+        System.out.println("│            성적 출력            │");
+        System.out.println("└─────────────────────────────────┘");
+        System.out.println();
+
+        Scanner sc1 = new Scanner(System.in);
+
+        System.out.printf("kor1>");
+        kor1 = sc1.nextInt();
+        System.out.printf("kor2>");
+        kor2 = sc1.nextInt();
+        System.out.printf("kor3>");
+        kor3 = sc1.nextInt();
         // system.out의 out은 이미 printstream이다.
 
         // out.close();
         FileOutputStream fos = new FileOutputStream("javaprj/res/data.txt");
-        PrintStream fout = new PrintStream(fos);
+        PrintStream fout = new PrintStream(fos,true,Charset.forName("utf-8"));
 
         fout.printf("%d %d %d\n", kor1,kor2,kor3);
         
