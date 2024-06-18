@@ -18,33 +18,30 @@ public class App {
             String[] tokens = line.split(",");
             name = tokens[0];
             System.out.println(tokens);
-
-            if (!isNumeric(tokens[1]))
+            // 문자열 토큰 값을 숫자로 변경
+            if (!(isNumeric(tokens[1])))
                 kor = 0;
-            else {
+            else
                 kor = Integer.parseInt(tokens[1]);
+            // 유효성 검사
+            if (!(0 <= kor && kor <= 100))
+                kor = 0;
 
-                if (!(0 <= kor && kor <= 100))
-                    kor = 0;
-            }
+            // -------------------------------------------------------------------------------------------------------------
 
             if (!isNumeric(tokens[2]))
                 eng = 0;
-            else {
+            else
                 eng = Integer.parseInt(tokens[2]);
-
-                if (!(0 <= eng && eng <= 100))
-                    eng = 0;
-            }
+            if (!(0 <= eng && eng <= 100))
+                eng = 0;
 
             if (!isNumeric(tokens[3]))
                 math = 0;
-            else {
+            else
                 math = Integer.parseInt(tokens[3]);
-
-                if (!(0 <= math && math <= 100))
-                    math = 0;
-            }
+            if (!(0 <= math && math <= 100))
+                math = 0;
 
         } // while 블록 끝
         System.out.println();
