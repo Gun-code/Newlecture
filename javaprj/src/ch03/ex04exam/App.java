@@ -11,7 +11,7 @@ public class App {
         while (true) {
 
             // 메뉴 입력
-            int menu = -1;
+            int menu;
             {
                 // 문제 1 : 다음 화면 코드를 이용해서 메뉴를 출력하는 코드를 작성하시오.
                 System.out.printf("""

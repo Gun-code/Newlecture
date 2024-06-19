@@ -4,59 +4,44 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        // System.out.printf("",);
-
-        String name;
-        int kor, eng, math;
-
-        FileInputStream fis = new FileInputStream("javaprj/res/data.csv");
+        FileInputStream fis = new FileInputStream("javaprj/res/data.txt");
         Scanner scan = new Scanner(fis);
 
-        while (scan.hasNextLine()) { // while 블록 시작
-            String line = scan.nextLine();
+        String full = scan.nextLine();
+        int b = Integer.parseInt(full.substring(0, 2));
+        System.out.println(Character.getNumericValue(b));
 
-            String[] tokens = line.split(",");
-            name = tokens[0];
-            System.out.println(tokens);
-            // 문자열 토큰 값을 숫자로 변경
-            if (!(isNumeric(tokens[1])))
-                kor = 0;
-            else
-                kor = Integer.parseInt(tokens[1]);
-            // 유효성 검사
-            if (!(0 <= kor && kor <= 100))
-                kor = 0;
+        int i = 0;
+        int j = 2;
 
-            // -------------------------------------------------------------------------------------------------------------
+        while (true) {
 
-            if (!isNumeric(tokens[2]))
-                eng = 0;
-            else
-                eng = Integer.parseInt(tokens[2]);
-            if (!(0 <= eng && eng <= 100))
-                eng = 0;
+            int a = Integer.parseInt(full.substring(i, j));
+            i += 2;
+            j += 2;
+            if (a == 32) {
+                break;
+            }
+            System.out.printf("%d", Character.getNumericValue(a));
 
-            if (!isNumeric(tokens[3]))
-                math = 0;
-            else
-                math = Integer.parseInt(tokens[3]);
-            if (!(0 <= math && math <= 100))
-                math = 0;
-
-        } // while 블록 끝
+        }
         System.out.println();
+        i = 0;
+        j = 2;
 
-        scan.close();
-        fis.close();
+        while (true) {
 
-    } // main 함수 끝
+            int a = Integer.parseInt(full.substring(i, j));
+            i += 2;
+            j += 2;
+            if (a == 13) {
+                break;
+            }
+            if (a == 32) {
+                System.out.print(" ");
+            } else
+                System.out.printf("%d", Character.getNumericValue(a));
 
-    public static boolean isNumeric(String str) {
-        try {
-            Double.parseDouble(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
         }
     }
 }
