@@ -5,7 +5,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.WebServlet;
 import java.io.*;
 
-public class FirstServlet extends HttpServlet {
+public class Nana extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         System.out.println("Hello Servlet~!");
         PrintWriter out = response.getWriter();
